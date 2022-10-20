@@ -1,0 +1,101 @@
+{
+   "name": "img-src-placeholder",
+   "version": "0.0.0",
+   "description": "Replace src=# in <img> tags of HTML files with an inline data URL of a transparent 1 pixel image (CLI tool designed for use in npm scripts)",
+   "license": "MIT",
+   "type": "module",
+   "module": "dist/img-src-placeholder.js",
+   "main": "dist/img-src-placeholder.umd.cjs",
+   "types": "dist/img-src-placeholder.d.ts",
+   "files": [
+      "dist"
+   ],
+   "exports": {
+      ".": {
+         "import": "./dist/img-src-placeholder.js",
+         "require": "./dist/img-src-placeholder.umd.cjs"
+      },
+      "./": "./dist/"
+   },
+   "bin": {
+      "img-src-placeholder": "bin/cli.js"
+   },
+   "repository": "github:center-key/img-src-placeholder",
+   "homepage": "https://github.com/center-key/img-src-placeholder",
+   "bugs": "https://github.com/center-key/img-src-placeholder/issues",
+   "docs": "https://github.com/center-key/img-src-placeholder#readme",
+   "author": "Center Key (https://centerkey.com)",
+   "keywords": [
+      "cli",
+      "html",
+      "img",
+      "placeholder",
+      "src"
+   ],
+   "jshintConfig": {
+      "esversion": 11,
+      "strict": "implied",
+      "eqeqeq": true,
+      "undef": true,
+      "unused": true,
+      "varstmt": true,
+      "node": true,
+      "mocha": true
+   },
+   "eslintConfig": {
+      "ignorePatterns": [
+         "build",
+         "dist",
+         "node_modules"
+      ],
+      "root": true,
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+         "@typescript-eslint"
+      ],
+      "extends": [
+         "eslint:recommended",
+         "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+         "@typescript-eslint/no-non-null-assertion": "off"
+      }
+   },
+   "scripts": {
+      "step:01": "rimraf build dist spec/fixtures/target **/.DS_Store",
+      "step:02": "jshint . --exclude-path .gitignore",
+      "step:03": "eslint --max-warnings 0 . --ext .ts",
+      "step:10": "tsc",
+      "step:11": "tsc --module UMD --outDir build/umd",
+      "step:12": "copy-file build/umd/img-src-placeholder.js build/img-src-placeholder.umd.cjs",
+      "step:20": "add-dist-header build dist",
+      "pretest": "npm-run-all step:*",
+      "test": "mocha spec/*.spec.js",
+      "posttest": "html-validator spec/fixtures"
+   },
+   "dependencies": {
+      "chalk": "~5.1",
+      "fancy-log": "~2.0",
+      "glob": "~8.0",
+      "istextorbinary": "~6.0",
+      "replacer-util": "~0.2",
+      "slash": "~5.0"
+   },
+   "devDependencies": {
+      "@types/fancy-log": "~2.0",
+      "@types/node": "~18.11",
+      "@typescript-eslint/eslint-plugin": "~5.40",
+      "@typescript-eslint/parser": "~5.40",
+      "add-dist-header": "~0.3",
+      "assert-deep-strict-equal": "~1.0",
+      "copy-file-util": "~0.1",
+      "eslint": "~8.25",
+      "jshint": "~2.13",
+      "mocha": "~10.1",
+      "npm-run-all2": "~6.0",
+      "rev-web-assets": "~0.1",
+      "rimraf": "~3.0",
+      "typescript": "~4.8",
+      "w3c-html-validator": "~1.2"
+   }
+}
