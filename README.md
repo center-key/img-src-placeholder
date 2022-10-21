@@ -1,24 +1,28 @@
 # img-src-placeholder
 <img src=https://centerkey.com/graphics/center-key-logo.svg align=right width=200 alt=logo>
 
-_Replace src=# in <img> tags of HTML files with an inline data URL of a transparent 1 pixel image (CLI tool designed for use in npm scripts)_
+_Replace `src=#` in `<img>` tags of HTML files with an inline data URL of a transparent 1 pixel image (CLI tool designed for use in npm scripts)_
 
 [![License:MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/center-key/img-src-placeholder/blob/main/LICENSE.txt)
 [![npm](https://img.shields.io/npm/v/img-src-placeholder.svg)](https://www.npmjs.com/package/img-src-placeholder)
 [![Vulnerabilities](https://snyk.io/test/github/center-key/img-src-placeholder/badge.svg)](https://snyk.io/test/github/center-key/img-src-placeholder)
 [![Build](https://github.com/center-key/img-src-placeholder/workflows/build/badge.svg)](https://github.com/center-key/img-src-placeholder/actions/workflows/run-spec-on-push.yaml)
 
-**img-src-placeholder** solves the trickly little problem that valid HTML requires that all <img> tags
-have a `src` attribute, even if your web application sets the `src` dynamically.
+**img-src-placeholder** solves the trickly little problem that valid HTML requires that all `<img>` tags
+have a `src` attribute, even if your web application sets the `src` attribute dynamically.
 
-It transforms:
+This tool transforms:
 ```html
 <img src=# alt=avatar>
 ```
 into:
 ```html
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjwvc3ZnPg==" alt=avatar>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjwvc3ZnPg=="
+   alt=avatar>
 ```
+
+<img src=https://raw.githubusercontent.com/center-key/img-src-placeholder/main/screenshot.png
+width=800 alt=screenshot>
 
 ## A) Setup
 Install package for node:
@@ -77,11 +81,18 @@ Example:
 ``` typescript
 import { imgSrcPlaceholder } from 'img-src-placeholder';
 const options = { extensions: ['.html'] };
-const results = imgSrcPlaceholder.transform('src/web', 'build/website', options);
+const results = imgSrcPlaceholder.transform('src/web', 'build', options);
 console.log('Number of files copied:', results.count);
 ```
 
 See the **TypeScript Declarations** at the top of [img-src-placeholder.ts](img-src-placeholder.ts) for documentation.
+
+## D) Under the Hood
+The data URL is created by **Base64** encoding a super simple `<svg>` string:
+```javascript
+const onePixelSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>';
+const dataImage = 'data:image/svg+xml;base64,' + Buffer.from(onePixelSvg).toString('base64');
+```
 
 <br>
 
@@ -92,6 +103,7 @@ See the **TypeScript Declarations** at the top of [img-src-placeholder.ts](img-s
    - 📂 [copy-folder-util](https://github.com/center-key/copy-folder-util):&nbsp; _Recursively copy files from one folder to another folder_
    - 🔍 [img-src-placeholder](https://github.com/center-key/img-src-placeholder):&nbsp; _Find and replace strings or template outputs in text files_
    - 🔢 [rev-web-assets](https://github.com/center-key/rev-web-assets):&nbsp; _Revision web asset filenames with cache busting content hash fingerprints_
+   - 🚆 [run-scripts-util](https://github.com/center-key/run-scripts-util):&nbsp; _Organize npm scripts into named groups of easy to manage commands_
    - 🚦 [w3c-html-validator](https://github.com/center-key/w3c-html-validator):&nbsp; _Check the markup validity of HTML files using the W3C validator_
 
 Feel free to submit questions at:<br>

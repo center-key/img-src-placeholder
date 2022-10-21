@@ -1,8 +1,8 @@
 #!/bin/bash
-#################
-# Task Runner   #
+#######################
+# Task Runner         #
 # img-src-placeholder #
-#################
+#######################
 
 # To make this file runnable:
 #     $ chmod +x *.sh.command
