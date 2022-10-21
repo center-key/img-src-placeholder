@@ -1,4 +1,4 @@
-//! img-src-placeholder v0.0.1 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v0.1.0 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { Results } from 'replacer-util';
 export declare type Settings = {
