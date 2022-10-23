@@ -60,6 +60,7 @@ Command-line flags:
 | --------------- | ------------------------------------------------ | ---------- |
 | `--cd`          | Change working directory before starting search. | **string** |
 | `--ext`         | Filter files by file extension, such as `.html`.<br>Use a comma to specify multiple extensions. | **string** |
+| `--note`        | Place to add a comment only for humans.          | **string** |
 | `--quiet`       | Suppress informational messages.                 | N/A        |
 | `--summary`     | Only print out the single line summary message.  | N/A        |
 
