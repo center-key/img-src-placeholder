@@ -1,12 +1,12 @@
-//! img-src-placeholder v0.1.0 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v0.1.1 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { Results } from 'replacer-util';
-export declare type Settings = {
+export type Settings = {
     cd: string | null;
     extensions: string[];
     filename: string | null;
 };
-export declare type Options = Partial<Settings>;
+export type Options = Partial<Settings>;
 declare const imgSrcPlaceholder: {
     htmlExts: string[];
     transform(sourceFolder: string, targetFolder: string, options?: Options): Results;

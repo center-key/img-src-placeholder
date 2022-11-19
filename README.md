@@ -91,8 +91,10 @@ See the **TypeScript Declarations** at the top of [img-src-placeholder.ts](img-s
 ## D) Under the Hood
 The data URL is created by **Base64** encoding a super simple `<svg>` string:
 ```javascript
-const onePixelSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>';
-const dataImage = 'data:image/svg+xml;base64,' + Buffer.from(onePixelSvg).toString('base64');
+const onePixelSvg =
+   '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>';
+const dataImage = 'data:image/svg+xml;base64,' +
+   Buffer.from(onePixelSvg).toString('base64');
 ```
 
 <br>

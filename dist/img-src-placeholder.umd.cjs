@@ -1,4 +1,4 @@
-//! img-src-placeholder v0.1.0 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v0.1.1 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 (function (factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
