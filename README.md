@@ -54,7 +54,7 @@ $ npm install --global img-src-placeholder
 $ img-src-placeholder src/web ext=.html docs/api-manual
 ```
 
-### 3. CLI Flags
+### 3. CLI flags
 Command-line flags:
 | Flag            | Description                                      | Value      |
 | --------------- | ------------------------------------------------ | ---------- |
@@ -66,7 +66,7 @@ Command-line flags:
 
 The default value for `--ext` is: `".html,.htm,.php,.aspx,.asp,.jsp"`
 
-### 4. Example CLI Usage
+### 4. Example CLI usage
 Examples:
    - `img-src-placeholder src/web build/website`<br>
    Recursively copy all HTML files in the **src/web** folder to the **build/website** folder and replace the "hash" placeholder image sources with an inline data URL for a transparent 1 pixel image.
