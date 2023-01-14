@@ -1,6 +1,6 @@
 {
    "name": "img-src-placeholder",
-   "version": "0.1.1",
+   "version": "0.1.2",
    "description": "Replace src=# in <img> tags of HTML files with an inline data URL of a transparent 1 pixel image (CLI tool designed for use in npm scripts)",
    "license": "MIT",
    "type": "module",
@@ -102,7 +102,7 @@
       "jshint": "~2.13",
       "mocha": "~10.2",
       "rev-web-assets": "~0.1",
-      "rimraf": "~3.0",
+      "rimraf": "~4.0",
       "run-scripts-util": "~0.1",
       "typescript": "~4.9",
       "w3c-html-validator": "~1.3"
