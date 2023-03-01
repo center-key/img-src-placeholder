@@ -1,7 +1,7 @@
 # img-src-placeholder
 <img src=https://centerkey.com/graphics/center-key-logo.svg align=right width=200 alt=logo>
 
-_Replace `src=#` in `<img>` tags of HTML files with an inline data URL of a transparent 1 pixel image (CLI tool designed for use in npm scripts)_
+_Replace `src=#` in `<img>` tags of HTML files with an inline Base64 data URL of a transparent 1 pixel image (CLI tool designed for use in npm scripts)_
 
 [![License:MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/center-key/img-src-placeholder/blob/main/LICENSE.txt)
 [![npm](https://img.shields.io/npm/v/img-src-placeholder.svg)](https://www.npmjs.com/package/img-src-placeholder)
@@ -69,9 +69,13 @@ The default value for `--ext` is: `".html,.htm,.php,.aspx,.asp,.jsp"`
 ### 4. Example CLI usage
 Examples:
    - `img-src-placeholder src/web build/website`<br>
-   Recursively copy all HTML files in the **src/web** folder to the **build/website** folder and replace the "hash" placeholder image sources with an inline data URL for a transparent 1 pixel image.
+   Recursively copy all HTML files in the **src/web** folder to the **build/website** folder and
+   replace the "hash" placeholder image sources with an inline data URL for a transparent 1 pixel
+   image.
+
    - `img-src-placeholder src/web build/website --summary`<br>
    Display the summary but not the individual files copied.
+
    - `img-src-placeholder src/web build/website --ext=.php`<br>
    Only process PHP files.
 
