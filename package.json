@@ -87,7 +87,6 @@
       "chalk": "~5.2",
       "cli-argv-util": "~1.0",
       "fancy-log": "~2.0",
-      "glob": "~9.0",
       "istextorbinary": "~6.0",
       "replacer-util": "~1.0",
       "slash": "~5.0"
