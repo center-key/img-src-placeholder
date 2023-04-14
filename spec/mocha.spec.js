@@ -81,7 +81,7 @@ describe('Executing the CLI', () => {
 
    it('creates the expected file with the correct <img> placeholder', () => {
       const cmd = 'node bin/cli.js spec/fixtures/source/subfolder spec/fixtures/target/cli';
-      execSync(cmd);
+      execSync(cmd, { stdio: 'inherit' });
       const html = fs.readFileSync('spec/fixtures/target/cli/mock2.html', 'utf-8');
       const imgTag = /<img [^>]*>/gm;
       const actual =   { tag: html.match(imgTag)[0] };
