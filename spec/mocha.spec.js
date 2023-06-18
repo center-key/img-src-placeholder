@@ -78,10 +78,11 @@ describe('Correct error is thrown', () => {
 
 ////////////////////////////////////////////////////////////////////////////////
 describe('Executing the CLI', () => {
+   const cmd = (posix) => process.platform === 'win32' ? posix.replaceAll('\\ ', '" "') : posix;
+   const run = (posix) => execSync(cmd(posix), { stdio: 'inherit' });
 
    it('creates the expected file with the correct <img> placeholder', () => {
-      const cmd = 'node bin/cli.js spec/fixtures/source/subfolder spec/fixtures/target/cli';
-      execSync(cmd, { stdio: 'inherit' });
+      run('node bin/cli.js spec/fixtures/source/subfolder spec/fixtures/target/cli');
       const html = fs.readFileSync('spec/fixtures/target/cli/mock2.html', 'utf-8');
       const imgTag = /<img [^>]*>/gm;
       const actual =   { tag: html.match(imgTag)[0] };
