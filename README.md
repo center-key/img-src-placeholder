@@ -85,6 +85,7 @@ Even though **img-src-placeholder** is primarily intended for build scripts, the
 Example:
 ``` typescript
 import { imgSrcPlaceholder } from 'img-src-placeholder';
+
 const options = { extensions: ['.html'] };
 const results = imgSrcPlaceholder.transform('src/web', 'build', options);
 console.log('Number of files copied:', results.count);
