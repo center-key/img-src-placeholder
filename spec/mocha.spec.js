@@ -10,6 +10,7 @@ import fs from     'fs';
 
 // Setup
 import { imgSrcPlaceholder } from '../dist/img-src-placeholder.js';
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 
 ////////////////////////////////////////////////////////////////////////////////
 describe('The "dist" folder', () => {
@@ -78,11 +79,14 @@ describe('Correct error is thrown', () => {
 
 ////////////////////////////////////////////////////////////////////////////////
 describe('Executing the CLI', () => {
-   const cmd = (posix) => process.platform === 'win32' ? posix.replaceAll('\\ ', '" "') : posix;
-   const run = (posix) => execSync(cmd(posix), { stdio: 'inherit' });
+   const run = (posix) => {
+      const name =    Object.keys(pkg.bin).sort()[0];
+      const command = process.platform === 'win32' ? posix.replaceAll('\\ ', '" "') : posix;
+      execSync(command.replace(name, 'node bin/cli.js'), { stdio: 'inherit' });
+      };
 
    it('creates the expected file with the correct <img> placeholder', () => {
-      run('node bin/cli.js spec/fixtures/source/subfolder spec/fixtures/target/cli');
+      run('img-src-placeholder spec/fixtures/source/subfolder spec/fixtures/target/cli');
       const html = fs.readFileSync('spec/fixtures/target/cli/mock2.html', 'utf-8');
       const imgTag = /<img [^>]*>/gm;
       const actual =   { tag: html.match(imgTag)[0] };
