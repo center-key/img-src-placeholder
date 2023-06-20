@@ -1,4 +1,4 @@
-//! img-src-placeholder v1.0.2 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.1.0 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { replacer } from 'replacer-util';
 const imgSrcPlaceholder = {
