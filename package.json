@@ -5,15 +5,14 @@
    "license": "MIT",
    "type": "module",
    "module": "dist/img-src-placeholder.js",
-   "main": "dist/img-src-placeholder.umd.cjs",
+   "main": "dist/img-src-placeholder.js",
    "types": "dist/img-src-placeholder.d.ts",
    "files": [
       "dist"
    ],
    "exports": {
       ".": {
-         "import": "./dist/img-src-placeholder.js",
-         "require": "./dist/img-src-placeholder.umd.cjs"
+         "import": "./dist/img-src-placeholder.js"
       },
       "./": "./dist/"
    },
@@ -73,8 +72,6 @@
       ],
       "build": [
          "tsc",
-         "tsc --module UMD --outDir build/umd",
-         "copy-file build/umd/img-src-placeholder.js build/img-src-placeholder.umd.cjs",
          "add-dist-header build dist"
       ]
    },
@@ -94,8 +91,8 @@
    "devDependencies": {
       "@types/fancy-log": "~2.0",
       "@types/node": "~20.3",
-      "@typescript-eslint/eslint-plugin": "~5.59",
-      "@typescript-eslint/parser": "~5.59",
+      "@typescript-eslint/eslint-plugin": "~5.60",
+      "@typescript-eslint/parser": "~5.60",
       "add-dist-header": "~1.0",
       "assert-deep-strict-equal": "~1.0",
       "copy-file-util": "~1.0",
