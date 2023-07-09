@@ -5,7 +5,6 @@ _Replace `src=#` in `<img>` tags of HTML files with an inline Base64 data URL of
 
 [![License:MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/center-key/img-src-placeholder/blob/main/LICENSE.txt)
 [![npm](https://img.shields.io/npm/v/img-src-placeholder.svg)](https://www.npmjs.com/package/img-src-placeholder)
-[![Vulnerabilities](https://snyk.io/test/github/center-key/img-src-placeholder/badge.svg)](https://snyk.io/test/github/center-key/img-src-placeholder)
 [![Build](https://github.com/center-key/img-src-placeholder/workflows/build/badge.svg)](https://github.com/center-key/img-src-placeholder/actions/workflows/run-spec-on-push.yaml)
 
 **img-src-placeholder** solves the trickly little problem that valid HTML requires that all `<img>` tags
