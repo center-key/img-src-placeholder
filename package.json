@@ -82,7 +82,7 @@
    },
    "dependencies": {
       "chalk": "~5.3",
-      "cli-argv-util": "~1.1",
+      "cli-argv-util": "~1.2",
       "fancy-log": "~2.0",
       "istextorbinary": "~6.0",
       "replacer-util": "~1.1",
@@ -91,8 +91,8 @@
    "devDependencies": {
       "@types/fancy-log": "~2.0",
       "@types/node": "~20.4",
-      "@typescript-eslint/eslint-plugin": "~5.61",
-      "@typescript-eslint/parser": "~5.61",
+      "@typescript-eslint/eslint-plugin": "~6.0",
+      "@typescript-eslint/parser": "~6.0",
       "add-dist-header": "~1.1",
       "assert-deep-strict-equal": "~1.1",
       "copy-file-util": "~1.1",
