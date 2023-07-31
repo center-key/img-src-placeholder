@@ -4,7 +4,6 @@
 // Imports
 import { assertDeepStrictEqual } from 'assert-deep-strict-equal';
 import { cliArgvUtil } from 'cli-argv-util';
-import { revWebAssets } from 'rev-web-assets';
 import assert from 'assert';
 import fs from     'fs';
 
@@ -49,10 +48,11 @@ describe('Calling imgSrcPlaceholder.transform()', () => {
    it('creates the correct text files in the target folder', () => {
       const options = { cd: 'spec/fixtures' };
       imgSrcPlaceholder.transform('source', 'target/cd', options);
-      const actual = revWebAssets.readFolderRecursive('spec/fixtures/target/cd');
+      const actual = fs.readdirSync('spec/fixtures/target/cd', { recursive: true }).sort();
       const expected = [
-         'spec/fixtures/target/cd/mock1.html',
-         'spec/fixtures/target/cd/subfolder/mock2.html',
+         'mock1.html',
+         'subfolder',
+         'subfolder/mock2.html',
          ];
       assertDeepStrictEqual(actual, expected);
       });
