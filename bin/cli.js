@@ -10,8 +10,8 @@
 //    },
 //
 // Usage from command line:
-//    $ npm install --global img-src-placeholder
-//    $ img-src-placeholder src/web docs --quiet
+//    $ npm install --save-dev img-src-placeholder
+//    $ npx img-src-placeholder src/web docs --quiet
 //
 // Contributors to this project:
 //    $ cd img-src-placeholder

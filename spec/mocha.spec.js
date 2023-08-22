@@ -5,7 +5,7 @@
 import { assertDeepStrictEqual } from 'assert-deep-strict-equal';
 import { cliArgvUtil } from 'cli-argv-util';
 import assert from 'assert';
-import fs from     'fs';
+import fs     from 'fs';
 
 // Setup
 import { imgSrcPlaceholder } from '../dist/img-src-placeholder.js';
@@ -48,7 +48,7 @@ describe('Calling imgSrcPlaceholder.transform()', () => {
    it('creates the correct text files in the target folder', () => {
       const options = { cd: 'spec/fixtures' };
       imgSrcPlaceholder.transform('source', 'target/cd', options);
-      const actual = fs.readdirSync('spec/fixtures/target/cd', { recursive: true }).sort();
+      const actual = cliArgvUtil.readFolder('spec/fixtures/target/cd');
       const expected = [
          'mock1.html',
          'subfolder',
