@@ -1,19 +1,20 @@
 // img-src-placeholder ~~ MIT License
 
+// Imports
 import { replacer, Results } from 'replacer-util';
 
+// Types
 export type Settings = {
    cd:         string | null,  //change working directory before starting search
    extensions: string[],       //filter files by file extensions, example: ['.html']
    filename:   string | null,  //single file in the source folder to be processed
    };
-export type Options = Partial<Settings>;
 
 const imgSrcPlaceholder = {
 
    htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
 
-   transform(sourceFolder: string, targetFolder: string, options?: Options): Results {
+   transform(sourceFolder: string, targetFolder: string, options?: Partial<Settings>): Results {
       const defaults = {
          cd:         null,
          extensions: [],
