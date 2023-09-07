@@ -78,7 +78,7 @@ Examples:
    Only process PHP files.
 
 ## C) Application Code
-Even though **img-src-placeholder** is primarily intended for build scripts, the package can easily be used programmatically in ESM and TypeScript projects.
+Even though **img-src-placeholder** is primarily intended for build scripts, the package can be used programmatically in ESM and TypeScript projects.
 
 Example:
 ``` typescript

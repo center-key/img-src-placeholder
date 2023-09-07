@@ -22,9 +22,7 @@
 // Imports
 import { cliArgvUtil } from 'cli-argv-util';
 import { imgSrcPlaceholder } from '../dist/img-src-placeholder.js';
-import chalk from 'chalk';
 import fs    from 'fs';
-import log   from 'fancy-log';
 import path  from 'path';
 
 // Parameters and flags
@@ -32,20 +30,6 @@ const validFlags = ['cd', 'ext', 'note', 'quiet', 'summary'];
 const cli =        cliArgvUtil.parse(validFlags);
 const source =     cli.params[0];  //origin file or folder
 const target =     cli.params[1];  //destination folder
-
-// Reporting
-const printReport = (results) => {
-   const name =      chalk.gray('img-src-placeholder');
-   const source =    chalk.blue.bold(results.source);
-   const target =    chalk.magenta(results.target);
-   const arrow =     { big: chalk.gray.bold(' ⟹  '), little: chalk.gray.bold('→') };
-   const infoColor = results.count ? chalk.white : chalk.red.bold;
-   const info =      infoColor(`(files: ${results.count}, ${results.duration}ms)`);
-   const logFile =   (file) => log(name, chalk.white(file.origin), arrow.little, chalk.green(file.dest));
-   log(name, source, arrow.big, target, info);
-   if (!cli.flagOn.summary)
-      results.files.forEach(logFile);
-   };
 
 // Transform Files
 const error =
@@ -66,4 +50,4 @@ const options = {
    };
 const results = imgSrcPlaceholder.transform(sourceFolder, target, options);
 if (!cli.flagOn.quiet)
-   printReport(results);
+   imgSrcPlaceholder.reporter(results, { summaryOnly: cli.flagOn.summary });

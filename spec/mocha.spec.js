@@ -34,9 +34,14 @@ describe('Library module', () => {
       assertDeepStrictEqual(actual, expected);
       });
 
-   it('has a transform() function', () => {
-      const actual =   { validate: typeof imgSrcPlaceholder.transform };
-      const expected = { validate: 'function' };
+   it('has functions named transform() and reporter()', () => {
+      const module = imgSrcPlaceholder;
+      const actual = Object.keys(module).sort().map(key => [key, typeof module[key]]);
+      const expected = [
+         ['htmlExts',  'object'],
+         ['reporter',  'function'],
+         ['transform', 'function'],
+         ];
       assertDeepStrictEqual(actual, expected);
       });
 
