@@ -19,7 +19,10 @@
    "bin": {
       "img-src-placeholder": "bin/cli.js"
    },
-   "repository": "github:center-key/img-src-placeholder",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/center-key/img-src-placeholder.git"
+   },
    "homepage": "https://github.com/center-key/img-src-placeholder",
    "bugs": "https://github.com/center-key/img-src-placeholder/issues",
    "docs": "https://github.com/center-key/img-src-placeholder#readme",
@@ -90,18 +93,18 @@
    },
    "devDependencies": {
       "@types/fancy-log": "~2.0",
-      "@types/node": "~20.5",
-      "@typescript-eslint/eslint-plugin": "~6.6",
-      "@typescript-eslint/parser": "~6.6",
+      "@types/node": "~20.6",
+      "@typescript-eslint/eslint-plugin": "~6.7",
+      "@typescript-eslint/parser": "~6.7",
       "add-dist-header": "~1.3",
       "assert-deep-strict-equal": "~1.1",
       "copy-file-util": "~1.1",
-      "eslint": "~8.48",
+      "eslint": "~8.50",
       "jshint": "~2.13",
       "mocha": "~10.2",
       "rimraf": "~5.0",
       "run-scripts-util": "~1.2",
       "typescript": "~5.2",
-      "w3c-html-validator": "~1.4"
+      "w3c-html-validator": "~1.5"
    }
 }
