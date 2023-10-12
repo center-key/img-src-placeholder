@@ -67,15 +67,20 @@ The default value for `--ext` is: `".html,.htm,.php,.aspx,.asp,.jsp"`
 ### 4. Example CLI usage
 Examples:
    - `img-src-placeholder src/web build/website`<br>
-   Recursively copy all HTML files in the **src/web** folder to the **build/website** folder and
-   replace the "hash" placeholder image sources with an inline data URL for a transparent 1 pixel
+   Recursively copies all HTML files in the **src/web** folder to the **build/website** folder and
+   replaces the "hash" placeholder image sources with an inline data URL for a transparent 1 pixel
    image.
 
    - `img-src-placeholder src/web build/website --summary`<br>
-   Display the summary but not the individual files copied.
+   Displays the summary but not the individual files copied.
 
    - `img-src-placeholder src/web build/website --ext=.php`<br>
-   Only process PHP files.
+   Only processes PHP files.
+
+   - `img-src-placeholder src/web 'build/Website Root' --ext=.php`<br>
+   Specifies a destination folder that has a space in its name.
+
+_**Note:** Single quotes in commands are normalized so they work cross-platform and avoid the errors often encountered on Microsoft Windows._
 
 ## C) Application Code
 Even though **img-src-placeholder** is primarily intended for build scripts, the package can be used programmatically in ESM and TypeScript projects.
