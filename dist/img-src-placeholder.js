@@ -1,6 +1,8 @@
-//! img-src-placeholder v1.1.0 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.1.1 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { replacer } from 'replacer-util';
+import chalk from 'chalk';
+import log from 'fancy-log';
 const imgSrcPlaceholder = {
     htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
     transform(sourceFolder, targetFolder, options) {
@@ -19,6 +21,23 @@ const imgSrcPlaceholder = {
             replacement: `src="${dataImage}"`,
         };
         return replacer.transform(sourceFolder, targetFolder, replacerSettings);
+    },
+    reporter(results, options) {
+        const defaults = {
+            summaryOnly: false,
+        };
+        const settings = { ...defaults, ...options };
+        const name = chalk.gray('img-src-placeholder');
+        const source = chalk.blue.bold(results.source);
+        const target = chalk.magenta(results.target);
+        const arrow = { big: chalk.gray.bold(' ⟹  '), little: chalk.gray.bold('→') };
+        const infoColor = results.count ? chalk.white : chalk.red.bold;
+        const info = infoColor(`(files: ${results.count}, ${results.duration}ms)`);
+        log(name, source, arrow.big, target, info);
+        const logFile = (file) => log(name, chalk.white(file.origin), arrow.little, chalk.green(file.dest));
+        if (!settings.summaryOnly)
+            results.files.forEach(logFile);
+        return results;
     },
 };
 export { imgSrcPlaceholder };

@@ -1,4 +1,4 @@
-//! img-src-placeholder v1.1.0 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.1.1 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { Results } from 'replacer-util';
 export type Settings = {
@@ -6,9 +6,12 @@ export type Settings = {
     extensions: string[];
     filename: string | null;
 };
-export type Options = Partial<Settings>;
+export type ReporterSettings = {
+    summaryOnly: boolean;
+};
 declare const imgSrcPlaceholder: {
     htmlExts: string[];
-    transform(sourceFolder: string, targetFolder: string, options?: Options): Results;
+    transform(sourceFolder: string, targetFolder: string, options?: Partial<Settings>): Results;
+    reporter(results: Results, options?: Partial<ReporterSettings>): Results;
 };
 export { imgSrcPlaceholder };
