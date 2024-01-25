@@ -1,14 +1,14 @@
 # img-src-placeholder
 <img src=https://centerkey.com/graphics/center-key-logo.svg align=right width=200 alt=logo>
 
-_Replace `src=#` in `<img>` tags of HTML files with an inline Base64 data URL of a transparent 1 pixel image (CLI tool designed for use in npm scripts)_
+_Replace `src=#` in `<img>` tags of HTML files with an inline Base64 data URL of a transparent 1 pixel image (CLI tool designed for use in npm package.json scripts)_
 
 [![License:MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/center-key/img-src-placeholder/blob/main/LICENSE.txt)
 [![npm](https://img.shields.io/npm/v/img-src-placeholder.svg)](https://www.npmjs.com/package/img-src-placeholder)
 [![Build](https://github.com/center-key/img-src-placeholder/workflows/build/badge.svg)](https://github.com/center-key/img-src-placeholder/actions/workflows/run-spec-on-push.yaml)
 
 **img-src-placeholder** solves the trickly little problem that valid HTML requires that all `<img>` tags
-have a `src` attribute, even if your web application sets the `src` attribute dynamically.
+have a `src` attribute even if your web application sets the `src` attribute dynamically.
 
 This tool transforms:
 ```html
@@ -30,7 +30,7 @@ $ npm install --save-dev img-src-placeholder
 ```
 
 ## B) Usage
-### 1. npm scripts
+### 1. npm package.json scripts
 Run `img-src-placeholder` from the `"scripts"` section of your **package.json** file.
 
 Parameters:
@@ -115,7 +115,7 @@ const dataImage = 'data:image/svg+xml;base64,' +
    - 🪺 [recursive-exec](https://github.com/center-key/recursive-exec):&nbsp; _Run a command on each file in a folder and its subfolders_
    - 🔍 [img-src-placeholder](https://github.com/center-key/img-src-placeholder):&nbsp; _Find and replace strings or template outputs in text files_
    - 🔢 [rev-web-assets](https://github.com/center-key/rev-web-assets):&nbsp; _Revision web asset filenames with cache busting content hash fingerprints_
-   - 🚆 [run-scripts-util](https://github.com/center-key/run-scripts-util):&nbsp; _Organize npm scripts into named groups of easy to manage commands_
+   - 🚆 [run-scripts-util](https://github.com/center-key/run-scripts-util):&nbsp; _Organize npm package.json scripts into named groups of easy to manage commands_
    - 🚦 [w3c-html-validator](https://github.com/center-key/w3c-html-validator):&nbsp; _Check the markup validity of HTML files using the W3C validator_
 
 Feel free to submit questions at:<br>
