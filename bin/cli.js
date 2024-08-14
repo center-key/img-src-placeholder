@@ -39,7 +39,7 @@ const error =
    cli.paramsCount > 2 ? 'Extraneous parameter: ' + cli.params[2] :
    null;
 if (error)
-   throw Error('[img-src-placeholder] ' + error);
+   throw new Error('[img-src-placeholder] ' + error);
 const sourceFile =   path.join(cli.flagMap.cd ?? '', source);
 const isFile =       fs.existsSync(sourceFile) && fs.statSync(sourceFile).isFile();
 const sourceFolder = isFile ? path.dirname(source) : source;
