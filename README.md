@@ -94,7 +94,7 @@ const results = imgSrcPlaceholder.transform('src/web', 'build', options);
 console.log('Number of files copied:', results.count);
 ```
 
-See the **TypeScript Declarations** at the top of [img-src-placeholder.ts](img-src-placeholder.ts) for documentation.
+See the **TypeScript Declarations** at the top of [img-src-placeholder.ts](src/img-src-placeholder.ts) for documentation.
 
 ## D) Under the Hood
 The data URL is created by **Base64** encoding a super simple `<svg>` string:
