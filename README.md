@@ -91,7 +91,7 @@ import { imgSrcPlaceholder } from 'img-src-placeholder';
 
 const options = { extensions: ['.html'] };
 const results = imgSrcPlaceholder.transform('src/web', 'build', options);
-console.log('Number of files copied:', results.count);
+console.info('Number of files copied:', results.count);
 ```
 
 See the **TypeScript Declarations** at the top of [img-src-placeholder.ts](src/img-src-placeholder.ts) for documentation.
