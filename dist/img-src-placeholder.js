@@ -1,4 +1,4 @@
-//! img-src-placeholder v1.1.4 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.1.5 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { replacer } from 'replacer-util';
 import chalk from 'chalk';
