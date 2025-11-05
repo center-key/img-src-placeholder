@@ -17,37 +17,8 @@
 //    $ cd img-src-placeholder
 //    $ npm install
 //    $ npm test
-//    $ node bin/cli.js --cd=spec/fixtures source target/cd --summary
+//    $ node bin/cli.js --cd=spec fixtures target/cd --summary
 
-// Imports
-import { cliArgvUtil } from 'cli-argv-util';
 import { imgSrcPlaceholder } from '../dist/img-src-placeholder.js';
-import fs    from 'fs';
-import path  from 'path';
 
-// Parameters and flags
-const validFlags = ['cd', 'ext', 'note', 'quiet', 'summary'];
-const cli =        cliArgvUtil.parse(validFlags);
-const source =     cli.params[0];  //origin file or folder
-const target =     cli.params[1];  //destination folder
-
-// Transform Files
-const error =
-   cli.invalidFlag ?    cli.invalidFlagMsg :
-   !source ?            'Missing source folder.' :
-   !target ?            'Missing target folder.' :
-   cli.paramCount > 2 ? 'Extraneous parameter: ' + cli.params[2] :
-   null;
-if (error)
-   throw new Error('[img-src-placeholder] ' + error);
-const sourceFile =   path.join(cli.flagMap.cd ?? '', source);
-const isFile =       fs.existsSync(sourceFile) && fs.statSync(sourceFile).isFile();
-const sourceFolder = isFile ? path.dirname(source) : source;
-const options = {
-   cd:         cli.flagMap.cd ?? null,
-   extensions: cli.flagMap.ext?.split(',') ?? [],
-   filename:   isFile ? path.basename(source) : null,
-   };
-const results = imgSrcPlaceholder.transform(sourceFolder, target, options);
-if (!cli.flagOn.quiet)
-   imgSrcPlaceholder.reporter(results, { summaryOnly: cli.flagOn.summary });
+imgSrcPlaceholder.cli();

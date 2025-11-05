@@ -1,10 +1,40 @@
-//! img-src-placeholder v1.1.5 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.2.0 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
+import { cliArgvUtil } from 'cli-argv-util';
 import { replacer } from 'replacer-util';
 import chalk from 'chalk';
+import fs from 'fs';
 import log from 'fancy-log';
+import path from 'path';
 const imgSrcPlaceholder = {
     htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
+    assert(ok, message) {
+        if (!ok)
+            throw new Error(`[img-src-placeholder] ${message}`);
+    },
+    cli() {
+        const validFlags = ['cd', 'ext', 'note', 'quiet', 'summary'];
+        const cli = cliArgvUtil.parse(validFlags);
+        const source = cli.params[0];
+        const target = cli.params[1];
+        const error = cli.invalidFlag ? cli.invalidFlagMsg :
+            !source ? 'Missing source folder.' :
+                !target ? 'Missing target folder.' :
+                    cli.paramCount > 2 ? 'Extraneous parameter: ' + cli.params[2] :
+                        null;
+        imgSrcPlaceholder.assert(!error, error);
+        const sourceFile = path.join(cli.flagMap.cd ?? '', source);
+        const isFile = fs.existsSync(sourceFile) && fs.statSync(sourceFile).isFile();
+        const sourceFolder = isFile ? path.dirname(source) : source;
+        const options = {
+            cd: cli.flagMap.cd ?? null,
+            extensions: cli.flagMap.ext?.split(',') ?? [],
+            filename: isFile ? path.basename(source) : null,
+        };
+        const results = imgSrcPlaceholder.transform(sourceFolder, target, options);
+        if (!cli.flagOn.quiet)
+            imgSrcPlaceholder.reporter(results, { summaryOnly: cli.flagOn.summary });
+    },
     transform(sourceFolder, targetFolder, options) {
         const defaults = {
             cd: null,
