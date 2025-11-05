@@ -64,8 +64,7 @@ Command-line flags:
 
 The default value for `--ext` is: `".html,.htm,.php,.aspx,.asp,.jsp"`
 
-### 4. Example CLI usage
-Examples:
+### 4. Examples
    - `img-src-placeholder src/web build/website`<br>
    Recursively copies all HTML files in the **src/web** folder to the **build/website** folder and
    replaces the "hash" placeholder image sources with an inline data URL for a transparent 1 pixel

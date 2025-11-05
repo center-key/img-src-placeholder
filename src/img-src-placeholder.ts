@@ -19,8 +19,13 @@ const imgSrcPlaceholder = {
 
    htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
 
+   assert(ok: unknown, message: string | null) {
+      if (!ok)
+         throw new Error(`[img-src-placeholder] ${message}`);
+      },
+
    transform(sourceFolder: string, targetFolder: string, options?: Partial<Settings>): Results {
-      const defaults = {
+      const defaults: Settings = {
          cd:         null,
          extensions: [],
          filename:   null,
@@ -38,7 +43,7 @@ const imgSrcPlaceholder = {
       },
 
    reporter(results: Results, options?: Partial<ReporterSettings>): Results {
-      const defaults = {
+      const defaults: ReporterSettings = {
          summaryOnly: false,
          };
       const settings = { ...defaults, ...options };
