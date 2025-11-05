@@ -42,7 +42,7 @@
    },
    "runScriptsConfig": {
       "clean": [
-         "rimraf build dist spec/fixtures/target"
+         "rimraf build dist spec/target"
       ],
       "lint": [
          "jshint . --exclude-path .gitignore",
@@ -56,7 +56,7 @@
    "scripts": {
       "pretest": "run-scripts clean lint build",
       "test": "mocha spec/*.spec.js",
-      "posttest": "html-validator spec/fixtures"
+      "posttest": "html-validator spec"
    },
    "dependencies": {
       "chalk": "~5.6",
