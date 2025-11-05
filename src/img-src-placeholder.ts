@@ -1,9 +1,12 @@
 // img-src-placeholder ~~ MIT License
 
 // Imports
+import { cliArgvUtil } from 'cli-argv-util';
 import { replacer, Results } from 'replacer-util';
 import chalk from 'chalk';
+import fs    from 'fs';
 import log   from 'fancy-log';
+import path  from 'path';
 
 // Types
 export type Settings = {
@@ -22,6 +25,31 @@ const imgSrcPlaceholder = {
    assert(ok: unknown, message: string | null) {
       if (!ok)
          throw new Error(`[img-src-placeholder] ${message}`);
+      },
+
+   cli() {
+      const validFlags = ['cd', 'ext', 'note', 'quiet', 'summary'];
+      const cli =        cliArgvUtil.parse(validFlags);
+      const source =     cli.params[0];  //origin file or folder
+      const target =     cli.params[1];  //destination folder
+      const error =
+         cli.invalidFlag ?    cli.invalidFlagMsg :
+         !source ?            'Missing source folder.' :
+         !target ?            'Missing target folder.' :
+         cli.paramCount > 2 ? 'Extraneous parameter: ' + cli.params[2]! :
+         null;
+      imgSrcPlaceholder.assert(!error, error);
+      const sourceFile =   path.join(cli.flagMap.cd ?? '', source!);
+      const isFile =       fs.existsSync(sourceFile) && fs.statSync(sourceFile).isFile();
+      const sourceFolder = isFile ? path.dirname(source!) : source;
+      const options: Settings = {
+         cd:         cli.flagMap.cd ?? null,
+         extensions: cli.flagMap.ext?.split(',') ?? [],
+         filename:   isFile ? path.basename(source!) : null,
+         };
+      const results = imgSrcPlaceholder.transform(sourceFolder!, target!, options);
+      if (!cli.flagOn.quiet)
+         imgSrcPlaceholder.reporter(results, { summaryOnly: cli.flagOn.summary! });
       },
 
    transform(sourceFolder: string, targetFolder: string, options?: Partial<Settings>): Results {
