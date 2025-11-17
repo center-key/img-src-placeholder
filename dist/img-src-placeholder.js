@@ -1,4 +1,4 @@
-//! img-src-placeholder v1.2.0 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.2.1 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { cliArgvUtil } from 'cli-argv-util';
 import { replacer } from 'replacer-util';

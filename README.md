@@ -30,12 +30,16 @@ $ npm install --save-dev img-src-placeholder
 ```
 
 ## B) Usage
-### 1. npm package.json scripts
-Run `img-src-placeholder` from the `"scripts"` section of your **package.json** file.
-
+### 1. Synopsis
+```
+img-src-placeholder [SOURCE] [TARGET]
+```
 Parameters:
 * The **first** parameter is the *source* folder or file.
 * The **second** parameter is the *target* folder.
+
+### 2. npm package.json scripts
+Run `img-src-placeholder` from the `"scripts"` section of your **package.json** file.
 
 Example **package.json** scripts:
 ```json
@@ -44,7 +48,7 @@ Example **package.json** scripts:
    },
 ```
 
-### 2. Command-line npx
+### 3. Command-line npx
 Example terminal commands:
 ```shell
 $ npm install --save-dev img-src-placeholder
@@ -52,7 +56,7 @@ $ npx img-src-placeholder src/web ext=.html docs/api-manual
 ```
 You can also install **img-src-placeholder** globally (`--global`) and then run it anywhere directly from the terminal.
 
-### 3. CLI flags
+### 4. CLI flags
 Command-line flags:
 | Flag            | Description                                      | Value      |
 | --------------- | ------------------------------------------------ | ---------- |
@@ -64,14 +68,14 @@ Command-line flags:
 
 The default value for `--ext` is: `".html,.htm,.php,.aspx,.asp,.jsp"`
 
-### 4. Examples
+### 5. Examples
    - `img-src-placeholder src/web build/website`<br>
    Recursively copies all HTML files in the **src/web** folder to the **build/website** folder and
    replaces the "hash" placeholder image sources with an inline data URL for a transparent 1 pixel
    image.
 
    - `img-src-placeholder src/web build/website --summary`<br>
-   Displays the summary but not the individual files copied.
+   Displays the summary informaion but not informaion about individual files copied.
 
    - `img-src-placeholder src/web build/website --ext=.php`<br>
    Only processes PHP files.
