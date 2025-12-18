@@ -1,4 +1,4 @@
-//! img-src-placeholder v1.2.1 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.2.2 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { cliArgvUtil } from 'cli-argv-util';
 import { replacer } from 'replacer-util';
@@ -58,13 +58,12 @@ const imgSrcPlaceholder = {
         };
         const settings = { ...defaults, ...options };
         const name = chalk.gray('img-src-placeholder');
-        const source = chalk.blue.bold(results.source);
-        const target = chalk.magenta(results.target);
-        const arrow = { big: chalk.gray.bold(' ⟹  '), little: chalk.gray.bold('→') };
+        const indent = chalk.gray('|');
+        const ancestor = cliArgvUtil.calcAncestor(results.source, results.target);
         const infoColor = results.count ? chalk.white : chalk.red.bold;
         const info = infoColor(`(files: ${results.count}, ${results.duration}ms)`);
-        log(name, source, arrow.big, target, info);
-        const logFile = (file) => log(name, chalk.white(file.origin), arrow.little, chalk.green(file.dest));
+        log(name, ancestor.message, info);
+        const logFile = (file) => log(name, indent, cliArgvUtil.calcAncestor(file.origin, file.dest).message);
         if (!settings.summaryOnly)
             results.files.forEach(logFile);
         return results;

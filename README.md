@@ -83,7 +83,8 @@ The default value for `--ext` is: `".html,.htm,.php,.aspx,.asp,.jsp"`
    - `img-src-placeholder src/web 'build/Website Root' --ext=.php`<br>
    Specifies a destination folder that has a space in its name.
 
-_**Note:** Single quotes in commands are normalized so they work cross-platform and avoid the errors often encountered on Microsoft Windows._
+> [!NOTE]
+> _Single quotes in commands are normalized so they work cross-platform and avoid the errors often encountered on Microsoft Windows._
 
 ## C) Application Code
 Even though **img-src-placeholder** is primarily intended for build scripts, the package can be used programmatically in ESM and TypeScript projects.
