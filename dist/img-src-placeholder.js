@@ -1,11 +1,11 @@
-//! img-src-placeholder v1.2.3 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.2.4 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { cliArgvUtil } from 'cli-argv-util';
 import { replacer } from 'replacer-util';
 import chalk from 'chalk';
-import fs from 'fs';
+import fs from 'node:fs';
 import log from 'fancy-log';
-import path from 'path';
+import path from 'node:path';
 const imgSrcPlaceholder = {
     htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
     assert(ok, message) {
