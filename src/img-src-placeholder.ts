@@ -37,7 +37,7 @@ const imgSrcPlaceholder = {
 
    htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
 
-   assert(ok: unknown, message: string | null) {
+   assertOk(ok: unknown, message: string | null) {
       if (!ok)
          throw new Error(`[img-src-placeholder] ${message}`);
       },
@@ -53,7 +53,7 @@ const imgSrcPlaceholder = {
          !target ?            'Missing target folder.' :
          cli.paramCount > 2 ? 'Extraneous parameter: ' + cli.params[2]! :
          null;
-      imgSrcPlaceholder.assert(!error, error);
+      imgSrcPlaceholder.assertOk(!error, error);
       const sourceFile =   path.join(cli.flagMap.cd ?? '', source!);
       const isFile =       fs.existsSync(sourceFile) && fs.statSync(sourceFile).isFile();
       const sourceFolder = isFile ? path.dirname(source!) : source;
