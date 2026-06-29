@@ -23,16 +23,30 @@ describe('The "dist" folder', () => {
    });
 
 ////////////////////////////////////////////////////////////////////////////////
+describe('Library version number', () => {
+
+   it('follows semantic version formatting', () => {
+      const version =  imgSrcPlaceholder.version;
+      const semVer =   /\d+[.]\d+[.]\d+/;
+      const actual =   { version: version, valid: semVer.test(version) };
+      const expected = { version: version, valid: true };
+      assertDeepStrictEqual(actual, expected);
+      });
+
+   });
+
+////////////////////////////////////////////////////////////////////////////////
 describe('Library module', () => {
 
-   it('is an object', () => {
-      const actual =   { constructor: imgSrcPlaceholder.constructor.name };
-      const expected = { constructor: 'Object' };
+   const module = imgSrcPlaceholder;
+
+   it('is exported as an object', () => {
+      const actual =   { type: typeof imgSrcPlaceholder };
+      const expected = { type: 'object' };
       assertDeepStrictEqual(actual, expected);
       });
 
    it('has functions named assert(), cli(), reporter(), and transform()', () => {
-      const module = imgSrcPlaceholder;
       const actual = Object.keys(module).sort().map(key => [key, typeof module[key]]);
       const expected = [
          ['assertOk',  'function'],
@@ -40,6 +54,7 @@ describe('Library module', () => {
          ['htmlExts',  'object'],
          ['reporter',  'function'],
          ['transform', 'function'],
+         ['version',   'string'],
          ];
       assertDeepStrictEqual(actual, expected);
       });

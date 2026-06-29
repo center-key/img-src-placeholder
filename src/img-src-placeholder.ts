@@ -17,7 +17,7 @@
 
 // Imports
 import { cliArgvUtil } from 'cli-argv-util';
-import { replacer, Results } from 'replacer-util';
+import { replacer, Results, ResultsFile } from 'replacer-util';
 import chalk from 'chalk';
 import fs    from 'node:fs';
 import log   from 'fancy-log';
@@ -34,6 +34,8 @@ export type ReporterSettings = {
    };
 
 const imgSrcPlaceholder = {
+
+   version: '{{package.version}}',
 
    htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
 
@@ -91,14 +93,16 @@ const imgSrcPlaceholder = {
          };
       const settings = { ...defaults, ...options };
       const name =      chalk.gray('img-src-placeholder');
-      const ancestor =  cliArgvUtil.calcAncestor(results.source, results.target);
+      const version =   chalk.gray('v' + imgSrcPlaceholder.version);
       const infoColor = results.count ? chalk.white : chalk.red.bold;
       const info =      infoColor(`(files: ${results.count}, ${results.duration}ms)`);
-      log(name, ancestor.message, info);
-      const logFile = (file: Results['files'][0], i: number) =>
-         log(name, chalk.magenta(i + 1), cliArgvUtil.calcAncestor(file.origin, file.dest).message);
+      log(name, version, results.source, info);
+      const logFile = (file: ResultsFile, index: number) =>
+         log(name, chalk.magenta(index + 1), cliArgvUtil.colorizePath(file.destPath));
+      const logSingleFile = (file: ResultsFile) =>
+         log(name, cliArgvUtil.colorizePath(file.destPath));
       if (!settings.summaryOnly)
-         results.files.forEach(logFile);
+         results.files.forEach(results.count > 1 ? logFile : logSingleFile);
       return results;
       },
 
