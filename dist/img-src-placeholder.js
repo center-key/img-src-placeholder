@@ -1,4 +1,4 @@
-//! img-src-placeholder v1.2.4 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.2.5 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { cliArgvUtil } from 'cli-argv-util';
 import { replacer } from 'replacer-util';
@@ -7,8 +7,9 @@ import fs from 'node:fs';
 import log from 'fancy-log';
 import path from 'node:path';
 const imgSrcPlaceholder = {
+    version: '1.2.5',
     htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
-    assert(ok, message) {
+    assertOk(ok, message) {
         if (!ok)
             throw new Error(`[img-src-placeholder] ${message}`);
     },
@@ -22,7 +23,7 @@ const imgSrcPlaceholder = {
                 !target ? 'Missing target folder.' :
                     cli.paramCount > 2 ? 'Extraneous parameter: ' + cli.params[2] :
                         null;
-        imgSrcPlaceholder.assert(!error, error);
+        imgSrcPlaceholder.assertOk(!error, error);
         const sourceFile = path.join(cli.flagMap.cd ?? '', source);
         const isFile = fs.existsSync(sourceFile) && fs.statSync(sourceFile).isFile();
         const sourceFolder = isFile ? path.dirname(source) : source;
@@ -58,13 +59,14 @@ const imgSrcPlaceholder = {
         };
         const settings = { ...defaults, ...options };
         const name = chalk.gray('img-src-placeholder');
-        const ancestor = cliArgvUtil.calcAncestor(results.source, results.target);
+        const version = chalk.gray('v' + imgSrcPlaceholder.version);
         const infoColor = results.count ? chalk.white : chalk.red.bold;
         const info = infoColor(`(files: ${results.count}, ${results.duration}ms)`);
-        log(name, ancestor.message, info);
-        const logFile = (file, i) => log(name, chalk.magenta(i + 1), cliArgvUtil.calcAncestor(file.origin, file.dest).message);
+        log(name, version, results.source, info);
+        const logFile = (file, index) => log(name, chalk.magenta(index + 1), cliArgvUtil.colorizePath(file.destPath));
+        const logSingleFile = (file) => log(name, cliArgvUtil.colorizePath(file.destPath));
         if (!settings.summaryOnly)
-            results.files.forEach(logFile);
+            results.files.forEach(results.count > 1 ? logFile : logSingleFile);
         return results;
     },
 };

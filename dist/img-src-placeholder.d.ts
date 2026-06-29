@@ -1,4 +1,4 @@
-//! img-src-placeholder v1.2.4 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.2.5 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { Results } from 'replacer-util';
 export type Settings = {
@@ -10,8 +10,9 @@ export type ReporterSettings = {
     summaryOnly: boolean;
 };
 declare const imgSrcPlaceholder: {
+    version: string;
     htmlExts: string[];
-    assert(ok: unknown, message: string | null): void;
+    assertOk(ok: unknown, message: string | null): void;
     cli(): void;
     transform(sourceFolder: string, targetFolder: string, options?: Partial<Settings>): Results;
     reporter(results: Results, options?: Partial<ReporterSettings>): Results;
