@@ -92,11 +92,11 @@ const imgSrcPlaceholder = {
          summaryOnly: false,
          };
       const settings = { ...defaults, ...options };
-      const name =      chalk.gray('img-src-placeholder');
-      const version =   chalk.gray('v' + imgSrcPlaceholder.version);
-      const infoColor = results.count ? chalk.white : chalk.red.bold;
-      const info =      infoColor(`(files: ${results.count}, ${results.duration}ms)`);
-      log(name, version, results.source, info);
+      const name =     chalk.gray('img-src-placeholder');
+      const version =  chalk.gray('v' + imgSrcPlaceholder.version);
+      const message =  `(files: ${results.count}, ${results.duration}ms)`;
+      const summary =  results.count ? chalk.blue(message) : chalk.red.bold(message);
+      log(name, version, results.source, summary);
       const logFile = (file: ResultsFile, index: number) =>
          log(name, chalk.magenta(index + 1), cliArgvUtil.colorizePath(file.destPath));
       const logSingleFile = (file: ResultsFile) =>
