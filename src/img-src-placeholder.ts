@@ -95,7 +95,7 @@ const imgSrcPlaceholder = {
       const name =     chalk.gray('img-src-placeholder');
       const version =  chalk.gray('v' + imgSrcPlaceholder.version);
       const message =  `(files: ${results.count}, ${results.duration}ms)`;
-      const summary =  results.count ? chalk.blue(message) : chalk.red.bold(message);
+      const summary =  results.count ? chalk.blue(message) : chalk.redBright(message);
       log(name, version, results.source, summary);
       const logFile = (file: ResultsFile, index: number) =>
          log(name, chalk.magenta(index + 1), cliArgvUtil.colorizePath(file.destPath));
