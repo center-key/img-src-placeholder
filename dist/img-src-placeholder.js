@@ -1,4 +1,4 @@
-//! img-src-placeholder v1.2.6 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
+//! img-src-placeholder v1.2.7 ~~ https://github.com/center-key/img-src-placeholder ~~ MIT License
 
 import { cliArgvUtil } from 'cli-argv-util';
 import { replacer } from 'replacer-util';
@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import log from 'fancy-log';
 import path from 'node:path';
 const imgSrcPlaceholder = {
-    version: '1.2.6',
+    version: '1.2.7',
     htmlExts: ['.html', '.htm', '.php', '.aspx', '.asp', '.jsp'],
     assertOk(ok, message) {
         if (!ok)
@@ -61,7 +61,7 @@ const imgSrcPlaceholder = {
         const name = chalk.gray('img-src-placeholder');
         const version = chalk.gray('v' + imgSrcPlaceholder.version);
         const message = `(files: ${results.count}, ${results.duration}ms)`;
-        const summary = results.count ? chalk.blue(message) : chalk.red.bold(message);
+        const summary = results.count ? chalk.blue(message) : chalk.redBright(message);
         log(name, version, results.source, summary);
         const logFile = (file, index) => log(name, chalk.magenta(index + 1), cliArgvUtil.colorizePath(file.destPath));
         const logSingleFile = (file) => log(name, cliArgvUtil.colorizePath(file.destPath));

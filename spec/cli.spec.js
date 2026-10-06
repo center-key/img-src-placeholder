@@ -38,7 +38,7 @@ describe('Executing the CLI', () => {
    });
 
 ////////////////////////////////////////////////////////////////////////////////
-describe('Error is handled correct executing the CLI', () => {
+describe('Error is handled correctly executing the CLI', () => {
 
    it('on a folder with no HTML files', () => {
       run('img-src-placeholder spec/fixtures/no-html spec/target/no-html');
